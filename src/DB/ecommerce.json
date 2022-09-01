@@ -1,0 +1,11 @@
+{
+    "id":"10000",
+    "messages":[
+    {"nombre":"juan","apellido":"perez","text":"hola","edad":"44","id":"1","avatar":"random avatar"},
+    {"nombre":"jose","apellido":"zapata","text":"que tal?","edad":"55","id":"2","avatar":"random avatar"},
+    {"nombre":"dario","apellido":"messi","text":"hola2","edad":"12","id":"3","avatar":"random avatar"},
+    {"nombre":"lionel","apellido":"gomez","text":"hola3","edad":"45","id":"4","avatar":"random avatar"},
+    {"nombre":"marcelito","apellido":"lugano","text":"hola4","edad":"22","id":"5","avatar":"random avatar"},
+    {"nombre":"luis","apellido":"irrera","text":"hola5","edad":"10","id":"6","avatar":"random avatar"},
+    {"nombre":"ricardo","apellido":"piedrabuena","text":"chau me voy","edad":"66","id":"7","avatar":"random avatar"}]
+}

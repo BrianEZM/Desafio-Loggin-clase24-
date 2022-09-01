@@ -1,0 +1,9 @@
+<h1 class="col-12 text-center" style="border-color: black">¿TE CARGAN LAS IMAGENES A VOS ROMI? xD</h1>
+	<% response.forEach(element => { %>
+		<%- include("partials/product", {
+			nombre: element.nombre,
+			imagen: element.imagen,
+			precio: element.precio
+		}) %>
+	<% }); %>
+<%- include("partials/footer") -%>
