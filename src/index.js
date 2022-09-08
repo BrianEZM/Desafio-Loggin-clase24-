@@ -12,7 +12,28 @@ import routes from "./routes/routes.js";
 
 app.use(express.static("./public"));
 app.use(routes);
-// "/api/productos", 
+// "/api/productos",
+
+const ageCookie = (minutes) => {
+	if (minutes === 1) {
+		return 60000;
+	} else {
+		return minutes * 60000;
+	}
+};
+
+app.use(cookieParser());
+app.use(
+	session({
+		store: new FileStore({path: "../sesiones", ttl: 300, retries: 0
+		}),
+		secret: "secret",
+		resave: false,
+		saveUninitialized: false,
+		cookie: { maxAge: ageCookie(2) },
+	})
+);
+
 // <------------------------- Configuracion de EJS ------------------------->
 
 app.set("view engine", ".ejs");
