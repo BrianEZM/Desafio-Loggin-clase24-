@@ -17,16 +17,16 @@ router.use(express.urlencoded({ extended: true }));
 
 // <------------------------- Rutas ------------------------->
 
-router.get("/:id?", async (req, res) => {
-	const { id } = req.params;
-	if (id !== undefined) {
-		const response = await contenedor.get(Number(id));
-		res.render("idProduct", { response });
-	} else {
-		const response = await contenedor.getAll();
-		res.render("allProducts", { response });
-	}
-});
+// router.get("/:id?", async (req, res) => {
+// 	const { id } = req.params;
+// 	if (id !== undefined) {
+// 		const response = await contenedor.get(Number(id));
+// 		res.render("idProduct", { response });
+// 	} else {
+// 		const response = await contenedor.getAll();
+// 		res.render("allProducts", { response });
+// 	}
+// });
 
 // CHAT PERSISTENCIA ARCHIVO.TXT PARA NORMALIZAR
 import prueba from "./normalizando.js";
@@ -82,5 +82,38 @@ router.delete("/:id", async (req, res) => {
 	const response = await contenedor.delete(Number(id));
 	res.render("deleteProduct", { response });
 });
+
+const auth = (req, res, next) => {
+	if (req.session?.name) {
+		next();
+	} else {
+		res.render("login", {});
+	}
+};
+
+const home = (req, res) => {
+	res.render("home", { name: req.session.name });
+};
+
+const login = (req, res) => {
+	let { name } = req.body;
+	req.session.name = name;
+	res.redirect("/formHome");
+};
+
+const destroy = (req, res) => {
+	try {
+		req.session.destroy();
+		res.redirect("/formHome");
+	} catch (error) {
+		res.status(500).send("Error: ", error);
+	}
+};
+
+router.get("/formHome", auth, home);
+
+router.post("/loginForm", login);
+
+router.post("/logout", destroy);
 
 export default router;

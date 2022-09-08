@@ -11,8 +11,8 @@ const io = new IOServer(httpServer);
 import routes from "./routes/routes.js";
 
 app.use(express.static("./public"));
-app.use("/api/productos", routes);
-
+app.use(routes);
+// "/api/productos", 
 // <------------------------- Configuracion de EJS ------------------------->
 
 app.set("view engine", ".ejs");

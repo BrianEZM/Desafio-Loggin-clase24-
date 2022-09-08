@@ -1,0 +1,9 @@
+<%- include("partials/header", {tituloWeb: "FORM LOG IN"}) -%>
+<%- include("partials/body") -%>
+	<h1 class="col-12 text-center">Seccion de Login/Logout</h1>
+	<form action="/logout" method="post">
+        <button id="submitBtn" type="submit" class="btn btn-success col-4 offset-4">
+            Salir
+        </button>
+    </form>
+<%- include("partials/footer") -%>
